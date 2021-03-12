@@ -34,4 +34,9 @@ public class Symble {
     public String getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + id + "\tValue: " + value + "\tType: " + type + "\n";
+    }
 }
