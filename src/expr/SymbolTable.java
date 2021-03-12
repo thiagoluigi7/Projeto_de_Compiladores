@@ -10,7 +10,7 @@ public class SymbolTable {
         symbolTable = new ArrayList<Symbol>();
     }
 
-    public void add(Symble _symbol) {
+    public void add(Symbol _symbol) {
         symbolTable.add(_symbol);
     }
 
