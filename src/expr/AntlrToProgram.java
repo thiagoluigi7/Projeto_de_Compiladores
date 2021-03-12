@@ -8,7 +8,7 @@ import java.util.List;
 
 public class AntlrToProgram extends GramaticaBaseVisitor<Program> {
     public List<String> semanticErrors;
-    public SymbleTable symbleTable;
+    public SymbolTable symbolTable;
 
     @Override
     public Program visitPrograma(GramaticaParser.ProgramaContext ctx) {
@@ -17,9 +17,9 @@ public class AntlrToProgram extends GramaticaBaseVisitor<Program> {
 
         semanticErrors = new ArrayList<>();
 
-        symbleTable = new SymbleTable();
+        symbolTable = new SymbolTable();
 
-        AntlrToExpression exprVisitor = new AntlrToExpression(semanticErrors, symbleTable);
+        AntlrToExpression exprVisitor = new AntlrToExpression(semanticErrors, symbolTable);
 
         for (int i =0;i<ctx.getChildCount();i++){
             if (i!=ctx.getChildCount()-1){
