@@ -1,11 +1,11 @@
 package expr;
 
-public class Symble {
+public class Symbol {
     private String id;
     private Integer value;
     private String type;
 
-    public Symble(String _id, Integer _value, String _type) {
+    public Symbol(String _id, Integer _value, String _type) {
         this.id = _id;
         this.value = _value;
         this.type = _type;
