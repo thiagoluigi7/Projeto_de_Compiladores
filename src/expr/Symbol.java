@@ -5,8 +5,8 @@ public class Symbol {
     private Integer value;
     private String type;
 
-    public Symbol(String _id, Integer _value, String _type) {
-        this.id = new Id(_id);
+    public Symbol(Id _id, Integer _value, String _type) {
+        this.id = _id;
         this.value = _value;
         this.type = _type;
     }
