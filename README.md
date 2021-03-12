@@ -3,7 +3,7 @@
 Este trabalho se destina a disciplina de Compiladores da UFLA (GCC130-2020/2). <br>
 
 Nele é implementado uma aplicação que realiza a análise sintática de determinado código fonte. Após a análise
-a aplicação constrói e imprime uma tabela de símbolos para uma linguagem simples.
+a aplicação constrói e imprime uma tabela de símbolos para uma linguagem EXEMPLO.
 
 ## Linguagem EXEMPLO
 
