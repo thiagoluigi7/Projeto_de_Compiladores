@@ -1,10 +1,10 @@
 package expr;
 
-public class Numero extends Expression{
+public class Number extends Expression{
     int value;
 
 
-    public Numero(int value){
+    public Number(int value){
         this.value=value;
     }
 
