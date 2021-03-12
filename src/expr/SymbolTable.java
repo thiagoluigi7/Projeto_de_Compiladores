@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Class used to store all the attributions of the program.
- * It consists of an ArrayList<Attribution>.
+ * It consists of an ArrayList.
  */
 public class SymbolTable {
 
