@@ -6,10 +6,11 @@ public class Operation extends Expression {
     char operator;
     Id id;
 
-    public Operation(Attribution _operand1, Attribution _operand2, char _operator) {
+    public Operation(Attribution _operand1, Attribution _operand2, char _operator, Id _id) {
         this.operand1 = _operand1;
         this.operand2 = _operand2;
         this.operator = _operator;
+        this.id = _id;
     }
 
     public Attribution getOperand1() {
