@@ -4,28 +4,28 @@ import java.util.ArrayList;
 
 public class SymbolTable {
 
-    private ArrayList<Symbol> symbolTable;
+    private ArrayList<Attribution> symbolTable;
 
     public SymbolTable() {
-        symbolTable = new ArrayList<Symbol>();
+        symbolTable = new ArrayList<Attribution>();
     }
 
-    public void add(Symbol _symbol) {
-        symbolTable.add(_symbol);
+    public void add(Attribution _attribution) {
+        symbolTable.add(_attribution);
     }
 
-    public int valueof(String id) {
+    public int valueof(Id id) {
         for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().getName().equals(id)) {
-                return symbolTable.get(i).getValue();
+            if (symbolTable.get(i).getId().equals(id)) {
+                return symbolTable.get(i).getNumber().getValue();
             }
         }
         throw new NullPointerException("Value not found.");
     }
 
-    public boolean check(String id) {
+    public boolean check(Id id) {
         for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().getName().equals(id)) {
+            if (symbolTable.get(i).getId().equals(id)) {
                 return true;
             }
         }
