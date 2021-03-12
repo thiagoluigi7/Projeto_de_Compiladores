@@ -16,7 +16,7 @@ public class SymbolTable {
 
     public int valueof(String id) {
         for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().equals(id)) {
+            if (symbolTable.get(i).getId().getName().equals(id)) {
                 return symbolTable.get(i).getValue();
             }
         }
@@ -25,7 +25,7 @@ public class SymbolTable {
 
     public boolean check(String id) {
         for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().equals(id)) {
+            if (symbolTable.get(i).getId().getName().equals(id)) {
                 return true;
             }
         }

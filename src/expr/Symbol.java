@@ -1,17 +1,17 @@
 package expr;
 
 public class Symbol {
-    private String id;
+    private Id id;
     private Integer value;
     private String type;
 
     public Symbol(String _id, Integer _value, String _type) {
-        this.id = _id;
+        this.id = new Id(_id);
         this.value = _value;
         this.type = _type;
     }
 
-    public void setId(String id) {
+    public void setId(Id id) {
         this.id = id;
     }
 
@@ -23,7 +23,7 @@ public class Symbol {
         this.type = type;
     }
 
-    public String getId() {
+    public Id getId() {
         return id;
     }
 
