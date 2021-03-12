@@ -1,13 +1,13 @@
 package expr;
 
 public class Attribution extends Expression {
-    Id id;
-    Number value;
-    Type type;
+    private Id id;
+    private Number number;
+    private Type type;
 
-    public Attribution(Id _id, Number _value, Type _type) {
+    public Attribution(Id _id, Number _number, Type _type) {
         this.id = _id;
-        this.value = _value;
+        this.number = _number;
         this.type = _type;
     }
 
@@ -19,12 +19,12 @@ public class Attribution extends Expression {
         this.id = id;
     }
 
-    public Number getValue() {
-        return value;
+    public Number getNumber() {
+        return number;
     }
 
-    public void setValue(Number value) {
-        this.value = value;
+    public void setNumber(Number number) {
+        this.number = number;
     }
 
     public Type getType() {
@@ -37,6 +37,6 @@ public class Attribution extends Expression {
 
     @Override
     public String toString() {
-        return id + " = " + value + "\n";
+        return "ID: " + id + "\tValue: " + number + "\tType: " + type + "\n";
     }
 }
