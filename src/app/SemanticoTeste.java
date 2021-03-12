@@ -34,7 +34,7 @@ public class SemanticoTeste {
                 }
 
             }
-            progVisitor.symbleTable.print();
+            progVisitor.symbolTable.print();
 
         }
     }
