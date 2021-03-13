@@ -18,37 +18,49 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPrograma(GramaticaParser.ProgramaContext ctx) { }
+	@Override public void enterProgram(GramaticaParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPrograma(GramaticaParser.ProgramaContext ctx) { }
+	@Override public void exitProgram(GramaticaParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtribuicao(GramaticaParser.AtribuicaoContext ctx) { }
+	@Override public void enterAttribution(GramaticaParser.AttributionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx) { }
+	@Override public void exitAttribution(GramaticaParser.AttributionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterOperacao(GramaticaParser.OperacaoContext ctx) { }
+	@Override public void enterSingleOperation(GramaticaParser.SingleOperationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitOperacao(GramaticaParser.OperacaoContext ctx) { }
+	@Override public void exitSingleOperation(GramaticaParser.SingleOperationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComplexOperation(GramaticaParser.ComplexOperationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComplexOperation(GramaticaParser.ComplexOperationContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

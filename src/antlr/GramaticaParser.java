@@ -102,7 +102,7 @@ public class GramaticaParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class ProgramaContext extends ProgContext {
+	public static class ProgramContext extends ProgContext {
 		public TerminalNode EOF() { return getToken(GramaticaParser.EOF, 0); }
 		public List<AttrContext> attr() {
 			return getRuleContexts(AttrContext.class);
@@ -116,18 +116,18 @@ public class GramaticaParser extends Parser {
 		public ContaContext conta(int i) {
 			return getRuleContext(ContaContext.class,i);
 		}
-		public ProgramaContext(ProgContext ctx) { copyFrom(ctx); }
+		public ProgramContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterPrograma(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterProgram(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitPrograma(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitProgram(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitPrograma(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitProgram(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -138,7 +138,7 @@ public class GramaticaParser extends Parser {
 		int _la;
 		try {
 			int _alt;
-			_localctx = new ProgramaContext(_localctx);
+			_localctx = new ProgramContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(7); 
@@ -201,22 +201,22 @@ public class GramaticaParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class AtribuicaoContext extends AttrContext {
+	public static class AttributionContext extends AttrContext {
 		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
 		public TerminalNode TIPO() { return getToken(GramaticaParser.TIPO, 0); }
 		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
-		public AtribuicaoContext(AttrContext ctx) { copyFrom(ctx); }
+		public AttributionContext(AttrContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterAtribuicao(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterAttribution(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitAtribuicao(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitAttribution(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitAtribuicao(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitAttribution(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -225,7 +225,7 @@ public class GramaticaParser extends Parser {
 		AttrContext _localctx = new AttrContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_attr);
 		try {
-			_localctx = new AtribuicaoContext(_localctx);
+			_localctx = new AttributionContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(18);
@@ -264,24 +264,48 @@ public class GramaticaParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class OperacaoContext extends ContaContext {
+	public static class SingleOperationContext extends ContaContext {
 		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
 		public TerminalNode ID(int i) {
 			return getToken(GramaticaParser.ID, i);
 		}
 		public TerminalNode OPERADOR() { return getToken(GramaticaParser.OPERADOR, 0); }
-		public OperacaoContext(ContaContext ctx) { copyFrom(ctx); }
+		public SingleOperationContext(ContaContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterOperacao(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterSingleOperation(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitOperacao(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitSingleOperation(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitOperacao(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitSingleOperation(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class ComplexOperationContext extends ContaContext {
+		public List<TerminalNode> OPERADOR() { return getTokens(GramaticaParser.OPERADOR); }
+		public TerminalNode OPERADOR(int i) {
+			return getToken(GramaticaParser.OPERADOR, i);
+		}
+		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(GramaticaParser.ID, i);
+		}
+		public ComplexOperationContext(ContaContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterComplexOperation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitComplexOperation(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitComplexOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -290,17 +314,68 @@ public class GramaticaParser extends Parser {
 		ContaContext _localctx = new ContaContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_conta);
 		try {
-			_localctx = new OperacaoContext(_localctx);
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(25);
-			match(ID);
-			setState(26);
-			match(OPERADOR);
-			setState(27);
-			match(ID);
-			setState(28);
-			match(T__2);
+			int _alt;
+			setState(41);
+			_errHandler.sync(this);
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			case 1:
+				_localctx = new SingleOperationContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				{
+				setState(25);
+				match(ID);
+				setState(26);
+				match(OPERADOR);
+				setState(27);
+				match(ID);
+				setState(28);
+				match(T__2);
+				}
+				}
+				break;
+			case 2:
+				_localctx = new ComplexOperationContext(_localctx);
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(37); 
+				_errHandler.sync(this);
+				_alt = 1;
+				do {
+					switch (_alt) {
+					case 1:
+						{
+						{
+						{
+						setState(29);
+						match(ID);
+						setState(30);
+						match(OPERADOR);
+						setState(31);
+						match(ID);
+						}
+						setState(33);
+						match(OPERADOR);
+						{
+						setState(34);
+						match(ID);
+						setState(35);
+						match(OPERADOR);
+						setState(36);
+						match(ID);
+						}
+						}
+						}
+						break;
+					default:
+						throw new NoViableAltException(this);
+					}
+					setState(39); 
+					_errHandler.sync(this);
+					_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -315,15 +390,18 @@ public class GramaticaParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\n!\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\n.\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\2\6\2\17\n\2\r\2\16\2\20\3\2\3"+
-		"\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\2\2\5\2\4\6\2\2"+
-		"\2\37\2\t\3\2\2\2\4\24\3\2\2\2\6\33\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n"+
-		"\13\3\2\2\2\13\t\3\2\2\2\13\f\3\2\2\2\f\16\3\2\2\2\r\17\5\6\4\2\16\r\3"+
-		"\2\2\2\17\20\3\2\2\2\20\16\3\2\2\2\20\21\3\2\2\2\21\22\3\2\2\2\22\23\7"+
-		"\2\2\3\23\3\3\2\2\2\24\25\7\6\2\2\25\26\7\3\2\2\26\27\7\7\2\2\27\30\7"+
-		"\4\2\2\30\31\7\t\2\2\31\32\7\5\2\2\32\5\3\2\2\2\33\34\7\6\2\2\34\35\7"+
-		"\b\2\2\35\36\7\6\2\2\36\37\7\5\2\2\37\7\3\2\2\2\4\13\20";
+		"\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
+		"\3\4\3\4\6\4(\n\4\r\4\16\4)\5\4,\n\4\3\4\2\2\5\2\4\6\2\2\2.\2\t\3\2\2"+
+		"\2\4\24\3\2\2\2\6+\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13\3\2\2\2\13\t\3"+
+		"\2\2\2\13\f\3\2\2\2\f\16\3\2\2\2\r\17\5\6\4\2\16\r\3\2\2\2\17\20\3\2\2"+
+		"\2\20\16\3\2\2\2\20\21\3\2\2\2\21\22\3\2\2\2\22\23\7\2\2\3\23\3\3\2\2"+
+		"\2\24\25\7\6\2\2\25\26\7\3\2\2\26\27\7\7\2\2\27\30\7\4\2\2\30\31\7\t\2"+
+		"\2\31\32\7\5\2\2\32\5\3\2\2\2\33\34\7\6\2\2\34\35\7\b\2\2\35\36\7\6\2"+
+		"\2\36,\7\5\2\2\37 \7\6\2\2 !\7\b\2\2!\"\7\6\2\2\"#\3\2\2\2#$\7\b\2\2$"+
+		"%\7\6\2\2%&\7\b\2\2&(\7\6\2\2\'\37\3\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2"+
+		"\2\2*,\3\2\2\2+\33\3\2\2\2+\'\3\2\2\2,\7\3\2\2\2\6\13\20)+";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

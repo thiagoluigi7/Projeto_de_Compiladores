@@ -4,11 +4,12 @@ grammar Gramatica;
     package antlr;
 }
 
-prog: attr+ conta+ EOF        #Programa
+prog: attr+ conta+ EOF        #Program
     ;
-attr: ID ':' TIPO '=' NUM ';'    #Atribuicao
+attr: ID ':' TIPO '=' NUM ';'    #Attribution
     ;
-conta: ID OPERADOR ID ';' #Operacao
+conta: (ID OPERADOR ID ';') #SingleOperation
+    |  ((ID OPERADOR ID) OPERADOR (ID OPERADOR ID))+ #ComplexOperation
     ;
 
 ID: ([a-z]|[A-Z])+;

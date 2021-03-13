@@ -10,39 +10,51 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface GramaticaListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by the {@code Programa}
+	 * Enter a parse tree produced by the {@code Program}
 	 * labeled alternative in {@link GramaticaParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void enterPrograma(GramaticaParser.ProgramaContext ctx);
+	void enterProgram(GramaticaParser.ProgramContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Programa}
+	 * Exit a parse tree produced by the {@code Program}
 	 * labeled alternative in {@link GramaticaParser#prog}.
 	 * @param ctx the parse tree
 	 */
-	void exitPrograma(GramaticaParser.ProgramaContext ctx);
+	void exitProgram(GramaticaParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Atribuicao}
+	 * Enter a parse tree produced by the {@code Attribution}
 	 * labeled alternative in {@link GramaticaParser#attr}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtribuicao(GramaticaParser.AtribuicaoContext ctx);
+	void enterAttribution(GramaticaParser.AttributionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Atribuicao}
+	 * Exit a parse tree produced by the {@code Attribution}
 	 * labeled alternative in {@link GramaticaParser#attr}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtribuicao(GramaticaParser.AtribuicaoContext ctx);
+	void exitAttribution(GramaticaParser.AttributionContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Operacao}
+	 * Enter a parse tree produced by the {@code SingleOperation}
 	 * labeled alternative in {@link GramaticaParser#conta}.
 	 * @param ctx the parse tree
 	 */
-	void enterOperacao(GramaticaParser.OperacaoContext ctx);
+	void enterSingleOperation(GramaticaParser.SingleOperationContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Operacao}
+	 * Exit a parse tree produced by the {@code SingleOperation}
 	 * labeled alternative in {@link GramaticaParser#conta}.
 	 * @param ctx the parse tree
 	 */
-	void exitOperacao(GramaticaParser.OperacaoContext ctx);
+	void exitSingleOperation(GramaticaParser.SingleOperationContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code ComplexOperation}
+	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * @param ctx the parse tree
+	 */
+	void enterComplexOperation(GramaticaParser.ComplexOperationContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ComplexOperation}
+	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * @param ctx the parse tree
+	 */
+	void exitComplexOperation(GramaticaParser.ComplexOperationContext ctx);
 }
