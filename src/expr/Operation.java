@@ -1,53 +1,45 @@
 package expr;
 
+import java.util.ArrayList;
+
 /**
  * Class used to store an operation. An operation is composed
  * by two attribution and one operator. It also includes an id
  * to find it on the OpTable.
  */
 public class Operation extends Expression {
-    private Attribution operand1;
-    private Attribution operand2;
-    private char operator;
-    // Todo Think how the id of the operations will work.
-    private Id id;
+    private ArrayList<Attribution> operands;
+    private ArrayList<String> operators;
+    private final Id id;
+
 
     /**
      * Constructor of the Operation class.
-     * @param _operand1 _operand1 is an Attribution object
-     * @param _operand2 _operand2 is an Attribution object
-     * @param _operator _operator is a char object. It can be '+' or '*'
-     * @param _id _id is an Id object
+     * @param _opTableSize It's used to create the id of the operation
      */
-    public Operation(Attribution _operand1, Attribution _operand2, char _operator, Id _id) {
-        this.operand1 = _operand1;
-        this.operand2 = _operand2;
-        this.operator = _operator;
-        this.id = _id;
+    public Operation(Integer _opTableSize) {
+        this.id = new Id(_opTableSize.toString());
     }
 
-    public Attribution getOperand1() {
-        return operand1;
+    public Attribution getOperand(Id id) {
+        for (Attribution operand : operands) {
+            if (operand.getId().equals(id)) {
+                return operand;
+            }
+        }
+        throw new NullPointerException("Operand not found.");
     }
 
-    public void setOperand1(Attribution operand1) {
-        this.operand1 = operand1;
+    public void setOperand(Attribution operand) {
+        operands.add(operand);
     }
 
-    public Attribution getOperand2() {
-        return operand2;
+    public String getOperator(Id id) {
+        return operators.get(Integer.parseInt(id.getName()));
     }
 
-    public void setOperand2(Attribution operand2) {
-        this.operand2 = operand2;
-    }
-
-    public char getOperator() {
-        return operator;
-    }
-
-    public void setOperator(char operator) {
-        this.operator = operator;
+    public void setOperator(String operator) {
+        operators.add(operator);
     }
 
     /**
@@ -60,10 +52,6 @@ public class Operation extends Expression {
         return id;
     }
 
-    public void setId(Id id) {
-        this.id = id;
-    }
-
     /**
      * Return the operation in a readable way.
      * I.e: a + b
@@ -71,7 +59,16 @@ public class Operation extends Expression {
      */
     @Override
     public String toString() {
-        return operand1 + " " + operator + " " + operand2;
+        StringBuilder txt = new StringBuilder();
+        for (int i = 0; i < operands.size(); i++) {
+            txt.append(operands.get(i).getNumber().getValue());
+            txt.append(" ");
+            if (i < operators.size()) {
+                txt.append(operators.get(i));
+                txt.append(" ");
+            }
+        }
+        return txt.toString();
     }
 
 }
