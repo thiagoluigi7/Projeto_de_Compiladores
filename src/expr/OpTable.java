@@ -15,6 +15,8 @@ public class OpTable {
         this.opTable = new ArrayList<>();
     }
 
+    public Integer getOpTableSize() { return opTable.size(); }
+
     public void add(Operation _operation) {
         opTable.add(_operation);
     }
@@ -31,9 +33,9 @@ public class OpTable {
      * throws a NullPointerException showing that the given operation doesn't exist.
      */
     public int valueof(Id id) {
-        for (int i = 0; i < opTable.size(); i++) {
-            if (opTable.get(i).getId().equals(id)) {
-                System.out.println(opTable.get(i));
+        for (Operation operation : opTable) {
+            if (operation.getId().equals(id)) {
+                System.out.println(operation);
             }
         }
         throw new NullPointerException("Operation not found.");
@@ -44,9 +46,9 @@ public class OpTable {
      * @param id id is the id of the operation
      * @return Returns true if the operation exists or false if it doesn't
      */
-    public boolean check(String id) {
-        for (int i = 0; i < opTable.size(); i++) {
-            if (opTable.get(i).getId().getName().equals(id)) {
+    public boolean check(Id id) {
+        for (Operation operation : opTable) {
+            if (operation.getId().equals(id)) {
                 return true;
             }
         }
