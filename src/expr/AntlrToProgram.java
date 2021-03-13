@@ -11,7 +11,7 @@ public class AntlrToProgram extends GramaticaBaseVisitor<Program> {
     public SymbolTable symbolTable;
 
     @Override
-    public Program visitPrograma(GramaticaParser.ProgramaContext ctx) {
+    public Program visitProgram(GramaticaParser.ProgramContext ctx) {
 
         Program prog = new Program();
 
