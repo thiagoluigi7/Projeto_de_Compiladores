@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class SymbolTable {
 
-    private ArrayList<Attribution> symbolTable;
+    private final ArrayList<Attribution> symbolTable;
 
     public SymbolTable() {
-        symbolTable = new ArrayList<Attribution>();
+        symbolTable = new ArrayList<>();
     }
 
     public void add(Attribution _attribution) {
@@ -29,9 +29,9 @@ public class SymbolTable {
      * throws a NullPointerException showing that the given id doesn't exist.
      */
     public int valueof(Id id) {
-        for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().equals(id)) {
-                return symbolTable.get(i).getNumber().getValue();
+        for (Attribution attribution : symbolTable) {
+            if (attribution.getId().equals(id)) {
+                return attribution.getNumber().getValue();
             }
         }
         throw new NullPointerException("Value not found.");
@@ -43,12 +43,21 @@ public class SymbolTable {
      * @return Returns true if the id exists or false if it doesn't
      */
     public boolean check(Id id) {
-        for (int i = 0; i < symbolTable.size(); i++) {
-            if (symbolTable.get(i).getId().equals(id)) {
+        for (Attribution attribution : symbolTable) {
+            if (attribution.getId().equals(id)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public Attribution getAttr(Id id) {
+        for (Attribution attribution : symbolTable) {
+            if (attribution.getId().equals(id)) {
+                return attribution;
+            }
+        }
+        throw new NullPointerException("Attribution not found.");
     }
 
     public void print() {
