@@ -21,12 +21,10 @@ public class OpTable {
         opTable.add(_operation);
     }
 
-    //Todo Improve this comment in the 24 line.
     /**
      * This method iterates over the array looking for the operation
      * that have the given id. Once this operation is found this method
      * returns the operation in a readable way.
-     * I.e: Consider: a:INT=1; Given 'a' as the id this method will return 1.
      * @param id id is the name of the operation.
      * @return Returns operation in a readable way
      * @throws NullPointerException If the given id can't be found this method
