@@ -12,32 +12,70 @@ public class AntlrToExpression extends GramaticaBaseVisitor<Expression> {
 
     private List<String> semanticErrors;
 
-    private SymbleTable symbleTable;
+    private SymbolTable symbolTable;
 
-    public AntlrToExpression(List<String> semanticErrors, SymbleTable symbleTable) {
+    private OpTable opTable;
+
+    public AntlrToExpression(List<String> semanticErrors, SymbolTable symbolTable) {
         declaredVariables = new ArrayList<>();
         this.semanticErrors = semanticErrors;
-        this.symbleTable=symbleTable;
+        this.symbolTable = symbolTable;
     }
 
     @Override
-    public Expression visitAtribuicao(GramaticaParser.AtribuicaoContext ctx) {
-        String id = ctx.ID().getText();
-        String value = ctx.NUM().getText();
-        Atribuicao attr = new Atribuicao(id,Integer.parseInt(value));
-        if (symbleTable.check(id)){
-            semanticErrors.add("Variavel já declarada : "+id);
+    public Expression visitAttribution(GramaticaParser.AttributionContext ctx) {
+        Id id = new Id(ctx.ID().getText());
+        Number value = new Number(Integer.parseInt(ctx.NUM().getText()));
+        Type type = new Type(ctx.TIPO().getText());
+        Attribution attr = new Attribution(id, value, type);
+        if (symbolTable.check(id)){
+            semanticErrors.add("Variable already declared: " + id.toString());
         } else {
-            symbleTable.add(id,Integer.parseInt(value));
+            symbolTable.add(attr);
         }
 
         return attr;
     }
 
-    // Todo
     @Override
-    public Expression visitOperacao(GramaticaParser.OperacaoContext ctx) {
+    public Expression visitSingleOperation(GramaticaParser.SingleOperationContext ctx) {
+        Operation operation = new Operation(opTable.getOpTableSize());
+        for (int i = 0; i < ctx.ID().size(); i++) {
+            Id id = new Id(ctx.ID(i).toString());
+            operation.setOperand(symbolTable.getAttr(id));
+        }
 
+        operation.setOperator(ctx.OPERADOR().getText());
+
+        if(opTable.check(operation.getId())) {
+            semanticErrors.add("Variable already declared: " + operation.getId().toString());
+        } else {
+            opTable.add(operation);
+        }
+
+        return operation;
+
+    }
+
+    @Override
+    public Expression visitComplexOperation(GramaticaParser.ComplexOperationContext ctx) {
+        Operation operation = new Operation(opTable.getOpTableSize());
+        for (int i = 0; i < ctx.ID().size(); i++) {
+            Id id = new Id(ctx.ID(i).toString());
+            operation.setOperand(symbolTable.getAttr(id));
+        }
+
+        for (int i = 0; i < ctx.OPERADOR().size(); i++) {
+            operation.setOperator(ctx.OPERADOR(i).getText());
+        }
+
+        if(opTable.check(operation.getId())) {
+            semanticErrors.add("Variable already declared: " + operation.getId().toString());
+        } else {
+            opTable.add(operation);
+        }
+
+        return operation;
 
     }
 
