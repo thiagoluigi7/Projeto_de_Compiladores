@@ -46,6 +46,15 @@ public class AntlrToExpression extends GramaticaBaseVisitor<Expression> {
 //         System.out.println(id + " " + type + " " + value);
 
         Declaration decl = new Declaration(id, type);
+
+        for (Declaration declaration : symbolTable) {
+            if (declaration.id.equals(decl.id)) {
+                semanticErrors.add("Error: Variable " + decl.id + " already declared. " +
+                                    "So it won't be added to the symbol table.");
+                return decl;
+            }
+        }
+
         String expectedType;
         if (value.matches("[0-9]*\\.[0-9]+")) {
             expectedType = "float";
