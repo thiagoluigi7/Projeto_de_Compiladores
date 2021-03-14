@@ -20,24 +20,31 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProgram(GramaticaParser.ProgramContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Attribution}
-	 * labeled alternative in {@link GramaticaParser#attr}.
+	 * Visit a parse tree produced by the {@code Declaration}
+	 * labeled alternative in {@link GramaticaParser#decl}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitAttribution(GramaticaParser.AttributionContext ctx);
+	T visitDeclaration(GramaticaParser.DeclarationContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code SingleOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Visit a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSingleOperation(GramaticaParser.SingleOperationContext ctx);
+	T visitVariable(GramaticaParser.VariableContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code ComplexOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Visit a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitComplexOperation(GramaticaParser.ComplexOperationContext ctx);
+	T visitNumber(GramaticaParser.NumberContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code Operation}
+	 * labeled alternative in {@link GramaticaParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitOperation(GramaticaParser.OperationContext ctx);
 }

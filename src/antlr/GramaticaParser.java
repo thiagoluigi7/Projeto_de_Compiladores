@@ -19,25 +19,25 @@ public class GramaticaParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, ID=4, TIPO=5, OPERADOR=6, NUM=7, WS=8;
+		T__0=1, T__1=2, TYPE=3, OPERATOR=4, ID=5, WS=6, NUM=7;
 	public static final int
-		RULE_prog = 0, RULE_attr = 1, RULE_conta = 2;
+		RULE_prog = 0, RULE_decl = 1, RULE_expr = 2;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"prog", "attr", "conta"
+			"prog", "decl", "expr"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "':'", "'='", "';'"
+			null, "'='", "';'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "ID", "TIPO", "OPERADOR", "NUM", "WS"
+			null, null, null, "TYPE", "OPERATOR", "ID", "WS", "NUM"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -104,17 +104,17 @@ public class GramaticaParser extends Parser {
 	}
 	public static class ProgramContext extends ProgContext {
 		public TerminalNode EOF() { return getToken(GramaticaParser.EOF, 0); }
-		public List<AttrContext> attr() {
-			return getRuleContexts(AttrContext.class);
+		public List<DeclContext> decl() {
+			return getRuleContexts(DeclContext.class);
 		}
-		public AttrContext attr(int i) {
-			return getRuleContext(AttrContext.class,i);
+		public DeclContext decl(int i) {
+			return getRuleContext(DeclContext.class,i);
 		}
-		public List<ContaContext> conta() {
-			return getRuleContexts(ContaContext.class);
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
 		}
-		public ContaContext conta(int i) {
-			return getRuleContext(ContaContext.class,i);
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
 		}
 		public ProgramContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
@@ -137,45 +137,39 @@ public class GramaticaParser extends Parser {
 		enterRule(_localctx, 0, RULE_prog);
 		int _la;
 		try {
-			int _alt;
 			_localctx = new ProgramContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(7); 
+			setState(8); 
 			_errHandler.sync(this);
-			_alt = 1;
+			_la = _input.LA(1);
 			do {
-				switch (_alt) {
-				case 1:
-					{
+				{
+				setState(8);
+				_errHandler.sync(this);
+				switch (_input.LA(1)) {
+				case TYPE:
 					{
 					setState(6);
-					attr();
+					decl();
 					}
+					break;
+				case ID:
+				case NUM:
+					{
+					setState(7);
+					expr(0);
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				setState(9); 
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,0,_ctx);
-			} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
-			setState(12); 
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			do {
-				{
-				{
-				setState(11);
-				conta();
 				}
-				}
-				setState(14); 
+				setState(10); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==ID );
-			setState(16);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TYPE) | (1L << ID) | (1L << NUM))) != 0) );
+			setState(12);
 			match(EOF);
 			}
 		}
@@ -190,56 +184,54 @@ public class GramaticaParser extends Parser {
 		return _localctx;
 	}
 
-	public static class AttrContext extends ParserRuleContext {
-		public AttrContext(ParserRuleContext parent, int invokingState) {
+	public static class DeclContext extends ParserRuleContext {
+		public DeclContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_attr; }
+		@Override public int getRuleIndex() { return RULE_decl; }
 	 
-		public AttrContext() { }
-		public void copyFrom(AttrContext ctx) {
+		public DeclContext() { }
+		public void copyFrom(DeclContext ctx) {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class AttributionContext extends AttrContext {
+	public static class DeclarationContext extends DeclContext {
+		public TerminalNode TYPE() { return getToken(GramaticaParser.TYPE, 0); }
 		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
-		public TerminalNode TIPO() { return getToken(GramaticaParser.TIPO, 0); }
 		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
-		public AttributionContext(AttrContext ctx) { copyFrom(ctx); }
+		public DeclarationContext(DeclContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterAttribution(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterDeclaration(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitAttribution(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitDeclaration(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitAttribution(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitDeclaration(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final AttrContext attr() throws RecognitionException {
-		AttrContext _localctx = new AttrContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_attr);
+	public final DeclContext decl() throws RecognitionException {
+		DeclContext _localctx = new DeclContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_decl);
 		try {
-			_localctx = new AttributionContext(_localctx);
+			_localctx = new DeclarationContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18);
+			setState(14);
+			match(TYPE);
+			setState(15);
 			match(ID);
-			setState(19);
+			setState(16);
 			match(T__0);
-			setState(20);
-			match(TIPO);
-			setState(21);
-			match(T__1);
-			setState(22);
+			setState(17);
 			match(NUM);
-			setState(23);
-			match(T__2);
+			setState(18);
+			match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -253,129 +245,180 @@ public class GramaticaParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ContaContext extends ParserRuleContext {
-		public ContaContext(ParserRuleContext parent, int invokingState) {
+	public static class ExprContext extends ParserRuleContext {
+		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_conta; }
+		@Override public int getRuleIndex() { return RULE_expr; }
 	 
-		public ContaContext() { }
-		public void copyFrom(ContaContext ctx) {
+		public ExprContext() { }
+		public void copyFrom(ExprContext ctx) {
 			super.copyFrom(ctx);
 		}
 	}
-	public static class SingleOperationContext extends ContaContext {
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
-		}
-		public TerminalNode OPERADOR() { return getToken(GramaticaParser.OPERADOR, 0); }
-		public SingleOperationContext(ContaContext ctx) { copyFrom(ctx); }
+	public static class VariableContext extends ExprContext {
+		public TerminalNode ID() { return getToken(GramaticaParser.ID, 0); }
+		public VariableContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterSingleOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterVariable(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitSingleOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitVariable(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitSingleOperation(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitVariable(this);
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class ComplexOperationContext extends ContaContext {
-		public List<TerminalNode> OPERADOR() { return getTokens(GramaticaParser.OPERADOR); }
-		public TerminalNode OPERADOR(int i) {
-			return getToken(GramaticaParser.OPERADOR, i);
-		}
-		public List<TerminalNode> ID() { return getTokens(GramaticaParser.ID); }
-		public TerminalNode ID(int i) {
-			return getToken(GramaticaParser.ID, i);
-		}
-		public ComplexOperationContext(ContaContext ctx) { copyFrom(ctx); }
+	public static class NumberContext extends ExprContext {
+		public TerminalNode NUM() { return getToken(GramaticaParser.NUM, 0); }
+		public NumberContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterComplexOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterNumber(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitComplexOperation(this);
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitNumber(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitComplexOperation(this);
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitNumber(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class OperationContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public List<TerminalNode> OPERATOR() { return getTokens(GramaticaParser.OPERATOR); }
+		public TerminalNode OPERATOR(int i) {
+			return getToken(GramaticaParser.OPERATOR, i);
+		}
+		public OperationContext(ExprContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).enterOperation(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof GramaticaListener ) ((GramaticaListener)listener).exitOperation(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof GramaticaVisitor ) return ((GramaticaVisitor<? extends T>)visitor).visitOperation(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final ContaContext conta() throws RecognitionException {
-		ContaContext _localctx = new ContaContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_conta);
+	public final ExprContext expr() throws RecognitionException {
+		return expr(0);
+	}
+
+	private ExprContext expr(int _p) throws RecognitionException {
+		ParserRuleContext _parentctx = _ctx;
+		int _parentState = getState();
+		ExprContext _localctx = new ExprContext(_ctx, _parentState);
+		ExprContext _prevctx = _localctx;
+		int _startState = 4;
+		enterRecursionRule(_localctx, 4, RULE_expr, _p);
+		int _la;
 		try {
 			int _alt;
-			setState(41);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(23);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
-			case 1:
-				_localctx = new SingleOperationContext(_localctx);
-				enterOuterAlt(_localctx, 1);
+			switch (_input.LA(1)) {
+			case NUM:
 				{
-				{
-				setState(25);
-				match(ID);
-				setState(26);
-				match(OPERADOR);
-				setState(27);
-				match(ID);
-				setState(28);
-				match(T__2);
-				}
+				_localctx = new NumberContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+
+				setState(21);
+				match(NUM);
 				}
 				break;
-			case 2:
-				_localctx = new ComplexOperationContext(_localctx);
-				enterOuterAlt(_localctx, 2);
+			case ID:
 				{
-				setState(37); 
-				_errHandler.sync(this);
-				_alt = 1;
-				do {
-					switch (_alt) {
-					case 1:
-						{
-						{
-						{
-						setState(29);
-						match(ID);
-						setState(30);
-						match(OPERADOR);
-						setState(31);
-						match(ID);
-						}
-						setState(33);
-						match(OPERADOR);
-						{
-						setState(34);
-						match(ID);
-						setState(35);
-						match(OPERADOR);
-						setState(36);
-						match(ID);
-						}
-						}
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
-					}
-					setState(39); 
+				_localctx = new VariableContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(22);
+				match(ID);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			_ctx.stop = _input.LT(-1);
+			setState(46);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					if ( _parseListeners!=null ) triggerExitRuleEvent();
+					_prevctx = _localctx;
+					{
+					{
+					_localctx = new OperationContext(new ExprContext(_parentctx, _parentState));
+					pushNewRecursionContext(_localctx, _startState, RULE_expr);
+					setState(25);
+					if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+					setState(26);
+					match(OPERATOR);
+					setState(27);
+					expr(0);
+					setState(39);
 					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+					_la = _input.LA(1);
+					while (_la==OPERATOR) {
+						{
+						{
+						setState(28);
+						match(OPERATOR);
+						setState(29);
+						expr(0);
+						setState(34);
+						_errHandler.sync(this);
+						_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+						while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+							if ( _alt==1 ) {
+								{
+								{
+								setState(30);
+								match(OPERATOR);
+								setState(31);
+								expr(0);
+								}
+								} 
+							}
+							setState(36);
+							_errHandler.sync(this);
+							_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+						}
+						}
+						}
+						setState(41);
+						_errHandler.sync(this);
+						_la = _input.LA(1);
+					}
+					setState(42);
+					match(T__1);
+					}
+					} 
 				}
-				break;
+				setState(48);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -384,24 +427,41 @@ public class GramaticaParser extends Parser {
 			_errHandler.recover(this, re);
 		}
 		finally {
-			exitRule();
+			unrollRecursionContexts(_parentctx);
 		}
 		return _localctx;
+	}
+
+	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
+		switch (ruleIndex) {
+		case 2:
+			return expr_sempred((ExprContext)_localctx, predIndex);
+		}
+		return true;
+	}
+	private boolean expr_sempred(ExprContext _localctx, int predIndex) {
+		switch (predIndex) {
+		case 0:
+			return precpred(_ctx, 3);
+		}
+		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\n.\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\3\2\6\2\n\n\2\r\2\16\2\13\3\2\6\2\17\n\2\r\2\16\2\20\3\2\3"+
-		"\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4"+
-		"\3\4\3\4\6\4(\n\4\r\4\16\4)\5\4,\n\4\3\4\2\2\5\2\4\6\2\2\2.\2\t\3\2\2"+
-		"\2\4\24\3\2\2\2\6+\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\13\3\2\2\2\13\t\3"+
-		"\2\2\2\13\f\3\2\2\2\f\16\3\2\2\2\r\17\5\6\4\2\16\r\3\2\2\2\17\20\3\2\2"+
-		"\2\20\16\3\2\2\2\20\21\3\2\2\2\21\22\3\2\2\2\22\23\7\2\2\3\23\3\3\2\2"+
-		"\2\24\25\7\6\2\2\25\26\7\3\2\2\26\27\7\7\2\2\27\30\7\4\2\2\30\31\7\t\2"+
-		"\2\31\32\7\5\2\2\32\5\3\2\2\2\33\34\7\6\2\2\34\35\7\b\2\2\35\36\7\6\2"+
-		"\2\36,\7\5\2\2\37 \7\6\2\2 !\7\b\2\2!\"\7\6\2\2\"#\3\2\2\2#$\7\b\2\2$"+
-		"%\7\6\2\2%&\7\b\2\2&(\7\6\2\2\'\37\3\2\2\2()\3\2\2\2)\'\3\2\2\2)*\3\2"+
-		"\2\2*,\3\2\2\2+\33\3\2\2\2+\'\3\2\2\2,\7\3\2\2\2\6\13\20)+";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\t\64\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\3\2\3\2\6\2\13\n\2\r\2\16\2\f\3\2\3\2\3\3\3\3\3\3\3\3\3\3"+
+		"\3\3\3\4\3\4\3\4\5\4\32\n\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\7\4#\n\4\f\4\16"+
+		"\4&\13\4\7\4(\n\4\f\4\16\4+\13\4\3\4\3\4\7\4/\n\4\f\4\16\4\62\13\4\3\4"+
+		"\2\3\6\5\2\4\6\2\2\2\66\2\n\3\2\2\2\4\20\3\2\2\2\6\31\3\2\2\2\b\13\5\4"+
+		"\3\2\t\13\5\6\4\2\n\b\3\2\2\2\n\t\3\2\2\2\13\f\3\2\2\2\f\n\3\2\2\2\f\r"+
+		"\3\2\2\2\r\16\3\2\2\2\16\17\7\2\2\3\17\3\3\2\2\2\20\21\7\5\2\2\21\22\7"+
+		"\7\2\2\22\23\7\3\2\2\23\24\7\t\2\2\24\25\7\4\2\2\25\5\3\2\2\2\26\27\b"+
+		"\4\1\2\27\32\7\t\2\2\30\32\7\7\2\2\31\26\3\2\2\2\31\30\3\2\2\2\32\60\3"+
+		"\2\2\2\33\34\f\5\2\2\34\35\7\6\2\2\35)\5\6\4\2\36\37\7\6\2\2\37$\5\6\4"+
+		"\2 !\7\6\2\2!#\5\6\4\2\" \3\2\2\2#&\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%(\3\2"+
+		"\2\2&$\3\2\2\2\'\36\3\2\2\2(+\3\2\2\2)\'\3\2\2\2)*\3\2\2\2*,\3\2\2\2+"+
+		")\3\2\2\2,-\7\4\2\2-/\3\2\2\2.\33\3\2\2\2/\62\3\2\2\2\60.\3\2\2\2\60\61"+
+		"\3\2\2\2\61\7\3\2\2\2\62\60\3\2\2\2\b\n\f\31$)\60";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

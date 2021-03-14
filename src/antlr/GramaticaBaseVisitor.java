@@ -26,19 +26,26 @@ public class GramaticaBaseVisitor<T> extends AbstractParseTreeVisitor<T> impleme
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAttribution(GramaticaParser.AttributionContext ctx) { return visitChildren(ctx); }
+	@Override public T visitDeclaration(GramaticaParser.DeclarationContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitSingleOperation(GramaticaParser.SingleOperationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitVariable(GramaticaParser.VariableContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitComplexOperation(GramaticaParser.ComplexOperationContext ctx) { return visitChildren(ctx); }
+	@Override public T visitNumber(GramaticaParser.NumberContext ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitOperation(GramaticaParser.OperationContext ctx) { return visitChildren(ctx); }
 }

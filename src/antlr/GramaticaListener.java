@@ -22,39 +22,51 @@ public interface GramaticaListener extends ParseTreeListener {
 	 */
 	void exitProgram(GramaticaParser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Attribution}
-	 * labeled alternative in {@link GramaticaParser#attr}.
+	 * Enter a parse tree produced by the {@code Declaration}
+	 * labeled alternative in {@link GramaticaParser#decl}.
 	 * @param ctx the parse tree
 	 */
-	void enterAttribution(GramaticaParser.AttributionContext ctx);
+	void enterDeclaration(GramaticaParser.DeclarationContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Attribution}
-	 * labeled alternative in {@link GramaticaParser#attr}.
+	 * Exit a parse tree produced by the {@code Declaration}
+	 * labeled alternative in {@link GramaticaParser#decl}.
 	 * @param ctx the parse tree
 	 */
-	void exitAttribution(GramaticaParser.AttributionContext ctx);
+	void exitDeclaration(GramaticaParser.DeclarationContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code SingleOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Enter a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterSingleOperation(GramaticaParser.SingleOperationContext ctx);
+	void enterVariable(GramaticaParser.VariableContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code SingleOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Exit a parse tree produced by the {@code Variable}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitSingleOperation(GramaticaParser.SingleOperationContext ctx);
+	void exitVariable(GramaticaParser.VariableContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code ComplexOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Enter a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void enterComplexOperation(GramaticaParser.ComplexOperationContext ctx);
+	void enterNumber(GramaticaParser.NumberContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code ComplexOperation}
-	 * labeled alternative in {@link GramaticaParser#conta}.
+	 * Exit a parse tree produced by the {@code Number}
+	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
 	 */
-	void exitComplexOperation(GramaticaParser.ComplexOperationContext ctx);
+	void exitNumber(GramaticaParser.NumberContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Operation}
+	 * labeled alternative in {@link GramaticaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterOperation(GramaticaParser.OperationContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Operation}
+	 * labeled alternative in {@link GramaticaParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitOperation(GramaticaParser.OperationContext ctx);
 }

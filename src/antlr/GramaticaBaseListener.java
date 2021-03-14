@@ -30,37 +30,49 @@ public class GramaticaBaseListener implements GramaticaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAttribution(GramaticaParser.AttributionContext ctx) { }
+	@Override public void enterDeclaration(GramaticaParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAttribution(GramaticaParser.AttributionContext ctx) { }
+	@Override public void exitDeclaration(GramaticaParser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleOperation(GramaticaParser.SingleOperationContext ctx) { }
+	@Override public void enterVariable(GramaticaParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleOperation(GramaticaParser.SingleOperationContext ctx) { }
+	@Override public void exitVariable(GramaticaParser.VariableContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComplexOperation(GramaticaParser.ComplexOperationContext ctx) { }
+	@Override public void enterNumber(GramaticaParser.NumberContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComplexOperation(GramaticaParser.ComplexOperationContext ctx) { }
+	@Override public void exitNumber(GramaticaParser.NumberContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterOperation(GramaticaParser.OperationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitOperation(GramaticaParser.OperationContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

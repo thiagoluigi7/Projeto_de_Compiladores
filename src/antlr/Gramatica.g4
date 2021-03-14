@@ -4,16 +4,17 @@ grammar Gramatica;
     package antlr;
 }
 
-prog: attr+ conta+ EOF        #Program
+prog: (decl|expr)+ EOF #Program
     ;
-attr: ID ':' TIPO '=' NUM ';'    #Attribution
+decl: TYPE ID'='NUM';'  #Declaration
     ;
-conta: (ID OPERADOR ID ';') #SingleOperation
-    |  ((ID OPERADOR ID) OPERADOR (ID OPERADOR ID))+ #ComplexOperation
+expr: expr OPERATOR expr (OPERATOR expr (OPERATOR expr)*)*';'    #Operation
+    | NUM               #Number
+    | ID                #Variable
     ;
 
-ID: ([a-z]|[A-Z])+;
-TIPO: ('INT' | 'FLOAT');
-OPERADOR: ('+' | '*');
-NUM: [0-9]+;
+TYPE: ('int'|'float');
+OPERATOR: ('+'|'*');
+ID:([a-z]|[A-Z])+;
 WS:[ \r\t\n]* ->skip;
+NUM: [0-9]+('.'[0-9]+)?;
