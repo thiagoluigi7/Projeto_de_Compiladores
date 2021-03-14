@@ -11,11 +11,14 @@ Linguagem EXEMPLO é uma linguagem que processa operações de multiplicação e
 
 Exemplo:
 
-a:INT=1; <br>
-b:FLOAT=2; <br>
+int a=1.0; <br>
+float a=1.0; <br>
+int b=5; <br>
+a+1; <br>
+b+2.0; <br>
 a+b; <br>
-a*b; <br>
-2*a+b*3; <br>
+2xa; (O x é uma multiplicação)<br>
+a+bxa; (O x é uma multiplicação)<br>
 
 ## Sobre o projeto
 
