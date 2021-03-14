@@ -42,3 +42,6 @@ Iremos utilizar apenas a branch ```master```.
 - As operações ficarão na tabela de operações. <br>
 - O idioma utilizado no programa é o inglês americano. Sendo assim commits, comentários e classes dentro do programa
 assim como todo o código será feito em inglês.
+- O programa contém duas checagens semânticas:
+- - Ele irá checar se a variável sendo declarada já não foi declarada antes.
+- - Ele irá checar se o tipo declarado condiz com o valor dado.
