@@ -10,7 +10,6 @@ public class Declaration extends Expression {
         this.type=type;
     }
 
-
     @Override
     public String toString() {
         if (type.equals("int")) {

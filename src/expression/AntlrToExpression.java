@@ -24,6 +24,15 @@ public class AntlrToExpression extends GramaticaBaseVisitor<Expression> {
         this.symbolTable = symbolTable;
     }
 
+    /**
+     * When a declaration is visited on the parser tree this method is invoked.
+     * Here is created a Declaration object using the type, id and number coming from
+     * the context that came as parameter. Here the types are checked as well. If
+     * the variable is declared as a int and the value is a float the method will report.
+     * @param ctx The ctx is where in the parser tree the program is currently in
+     * @return Returns the declaration created (note that it will return a declaration even if it wasn't added
+     * to the symbol table, so it will return declarations that may be wrong. Use these declarations with care
+     */
     @Override
     public Expression visitDeclaration(GramaticaParser.DeclarationContext ctx) {
         Token token = ctx.TYPE().getSymbol();
@@ -75,6 +84,12 @@ public class AntlrToExpression extends GramaticaBaseVisitor<Expression> {
         return new Variable(id);
     }
 
+    /**
+     * Once a operation is visited this method will create a operation object containing
+     * all the operands and operators.
+     * @param ctx The ctx is where in the parser tree the program is currently in
+     * @return Returns a operation object
+     */
     @Override
     public Expression visitOperation(GramaticaParser.OperationContext ctx) {
         ArrayList<Expression> operands = new ArrayList<>();
